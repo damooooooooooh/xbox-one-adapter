@@ -1,0 +1,84 @@
+{
+  "name": "xbox-one-adapter",
+  "display_name": "Xbox One",
+  "version": "0.0.1",
+  "description": "Xbox One device adapter.",
+  "author": "damooooooooooh",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "mozilla",
+    "iot",
+    "adapter",
+    "xbox",
+    "xbox one"
+  ],
+  "homepage": "https://github.com/damooooooooooh/xbox-one-adapter",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damooooooooooh/xbox-one-adapter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/damooooooooooh/xbox-one-adapter/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0"
+  },
+  "files": [
+    "LICENSE",
+    "SHA256SUMS",
+    "index.js",
+    "lib/xbox-one-adapter.js",
+    "lib/xbox-one-device.js",
+    "lib/xbox-one-property.js"
+  ],
+  "moziot": {
+    "api": {
+      "min": 2,
+      "max": 2
+    },
+    "plugin": true,
+    "exec": "{nodeLoader} {path}",
+    "config": {
+      "email": "",
+      "password": "",
+      "pollInterval": 10
+    },
+    "schema": {
+      "type": "object",
+      "description": "Add the xbox device that you wish to control.<br/><br/>Get your Xbox One's IP address On your Xbox, go to Settings > Network > Network Settings > Advanced Settings.<br/><br/>Getting your Live ID On your Xbox, go to Settings > System > Console info & updates and look under Xbox Live device ID",
+      "properties": {
+        "devices": {
+          "description": "List of Xbox Devices to Control",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "ip_address",
+              "xbox_device_id"
+            ],
+            "properties": {
+              "ip_address": {
+                "description": "Xbox Local IP Address",
+                "type": "string"
+              },
+              "xbox_device_id": {
+                "description": "Xbox Device ID",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
